@@ -1,0 +1,94 @@
+create teacher:
+{
+  "query": "mutation CreateTeacher($input: CreateTeacherInput!) { createTeacher(input: $input) { id email phoneno standed role } }",
+  "variables": {
+    "input": {
+      "email": "twsddwed@gmail.com",
+      "phoneno": "12345689055",
+      "standed": "Grade 10"
+    }
+  }
+}
+
+
+get teacher by id:
+
+{
+  "query": "query GetTeacher($id: ID!) { getTeacher(id: $id) { id email phoneno standed role } }",
+  "variables": {
+    "id": 1  // Substitute with the ID of the teacher you want to fetch
+  }
+}
+
+
+
+create student by teacher:
+
+{
+  "query": "mutation CreateStudent($email: String!, $phoneno: String!, $standed: String!, $teacherId: Int!) { createStudent(email: $email, phoneno: $phoneno, standed: $standed, teacherId: $teacherId) { id email phoneno standed teacherId } }",
+  "variables": {
+    "email": "tesqs@xddampeele.com",
+    "phoneno": "1234567890",
+    "standed": "Grade 10",
+    "teacherId": 5
+  }
+}
+
+
+
+add mark teacher:
+
+{
+  "query": "mutation addMarks($studentId: ID!, $teacherId: ID!, $marks: MarksInput!) { addMarksForStudent(studentId: $studentId, teacherId: $teacherId, marks: $marks) { id studentId teacherId tamil english maths physics } }",
+  "variables": {
+    "studentId": 5,
+    "teacherId": 2,
+    "marks": {
+      "tamil": 85,
+      "english": 90,
+      "maths": 95,
+      "physics": 88
+    }
+  }
+}
+
+
+
+update mark by teacher:
+
+{
+  "query": "mutation updateMarks($studentId: ID!, $teacherId: ID!, $marks: MarksInput!) { updateMarksForStudent(studentId: $studentId, teacherId: $teacherId, marks: $marks) { id studentId teacherId tamil english maths physics } }",
+  "variables": {
+    "studentId": 5,
+    "teacherId": 2,
+    "marks": {
+      "tamil": 2,
+      "english": 20,
+      "maths": 95,
+      "physics": 88
+    }
+  }
+}
+
+
+
+view mark by student:
+
+{
+  "query": "query getMarksForStudent($studentId: ID!) { getMarksForStudent(studentId: $studentId) { id tamil english maths physics teacherId } }",
+  "variables": {
+    "studentId": 5
+  }
+}
+
+
+
+delete mark by teacher
+
+{
+  "query": "mutation deleteMarks($studentId: ID!, $teacherId: ID!) { deleteMarksForStudent(studentId: $studentId, teacherId: $teacherId) }",
+  "variables": {
+    "studentId": 5,
+    "teacherId": 2
+  }
+}
